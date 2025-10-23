@@ -8,7 +8,7 @@
   body {
     margin: 0;
     padding: 0;
-    background: black;
+    background: blue;
     color: white;
     font-family: Arial, sans-serif;
     display: flex;
@@ -16,13 +16,13 @@
     justify-content: flex-start;
     align-items: center;
     height: 100vh;
+    overflow: hidden;
   }
 
   .screen {
     width: 100%;
     max-width: 450px;
     height: 100vh;
-    background: black;
     padding: 20px;
     box-sizing: border-box;
   }
@@ -48,20 +48,27 @@
   button {
     padding: 12px 22px;
     font-size: 18px;
-    background: white;
-    color: black;
     border: none;
     cursor: pointer;
     border-radius: 6px;
+  }
+
+  .start-btn {
+    background: #00c200;
+    color: white;
+  }
+
+  .reset-btn {
+    background: #e00000;
+    color: white;
   }
 
   .instructions {
     font-size: 15px;
     line-height: 1.45;
     margin-top: 10px;
-    overflow-y: auto;
     max-height: 52vh;
-    padding-right: 5px;
+    overflow-y: auto;
   }
 </style>
 </head>
@@ -71,37 +78,41 @@
   <div id="timer">20:00</div>
 
   <div class="btns">
-    <button onclick="startTimer()">Start</button>
-    <button onclick="resetTimer()">Reset</button>
+    <button class="start-btn" onclick="startTimer()">Start</button>
+    <button class="reset-btn" onclick="resetTimer()">Reset</button>
   </div>
 
   <div class="instructions">
     <h3>Step-by-Step Instructions for Freezing a Beer Bottle in the Freezer 🍺❄️</h3>
     <p><b>Step 1: The Mission</b><br>
-    Open your freezer like you're entering a top-secret vault. Whisper to yourself: “Operation Ice-Cold Brew begins now.”</p>
+    Open your freezer like you're entering a top-secret vault. Whisper: “Operation Ice-Cold Brew begins now.”</p>
 
     <p><b>Step 2: Clear Space</b><br>
     Move aside the frozen pizza, mystery Tupperware, and that bag of peas you never use. Your beer deserves VIP space.</p>
 
     <p><b>Step 3: Place the Beer</b><br>
-    Gently lay your beer in the freezer like it's a newborn baby from a brewery. Do NOT toss it.</p>
+    Gently lay your beer in the freezer like it's a newborn. Do NOT toss it.</p>
 
     <p><b>Step 4: Set the Timer</b><br>
-    Press Start. Because if you don’t, you WILL forget, and you WILL create beer slush explosion art.</p>
+    Press Start. Because if you don’t, you WILL forget and cause a beer slush explosion.</p>
 
-    <p><b>Step 5: Walk Away Confidently</b><br>
-    Close freezer. Say “I am responsible.” (You're not. But try.)</p>
+    <p><b>Step 5: Walk Away</b><br>
+    Say: “I am responsible.” (You’re not. But try.)</p>
 
     <p><b>Step 6: Fight the Urge</b><br>
-    Do NOT open the door to “just check.” It's beer, not a soufflé.</p>
+    Do NOT check the beer. This isn't a soufflé.</p>
 
     <p><b>Step 7: Retrieve on Time</b><br>
-    When the timer beeps, sprint back like it's the Olympics. Save the beer from its icy doom.</p>
+    When the timer ends, sprint like it's the Olympics and save that beer.</p>
 
     <p><b>Step 8: Celebrate</b><br>
-    Crack open your masterpiece. You have achieved Peak Refreshment.</p>
+    Crack open your masterpiece. Achieve Peak Refreshment.</p>
   </div>
 </div>
+
+<audio id="chime-sound">
+  <source src="https://actions.google.com/sounds/v1/alarms/beep_short.ogg" type="audio/ogg" />
+</audio>
 
 <script>
   let time = 1200;
@@ -122,7 +133,7 @@
       if (time <= 0) {
         clearInterval(countdown);
         countdown = null;
-        alert("⏰ Beer Time! Grab it NOW! 🍺❄️");
+        document.getElementById("chime-sound").play();
       }
     }, 1000);
   }
@@ -136,4 +147,6 @@
 </script>
 </body>
 </html>
+
+
 
